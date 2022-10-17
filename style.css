@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background-image: url(images/background-image.png);
+  background-size: cover;
+
+  color: white;
+
+  display: flex;
+  justify-content: center; 
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 8px 0 3px 0;
+}
+
+h3 {
+  margin: 0 0 15px;
+}
+
+a {
+  text-decoration: none;
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  padding: 5px 10px;
+  color: black;
+  margin-bottom: 25px;
+}
+
+.contador-pomodoro {
+  height: 70%;
+  width: 92vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 10%;
+}
+
+.estudando, .descansando {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 40%;
+  height: 65%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(212, 212, 212);
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 11px;
+  background-color: rgb(255, 255, 255);
+  padding: 7px 25px;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 100px;
+}
+
+input {
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: transparent;
+  color: white;
+  width: 2.4rem;
+  outline: none;
+  border-left: 1px solid rgb(75, 75, 75);
+  border-top: 1px solid rgb(75, 75, 75);
+  border-right: 1px solid rgb(46, 46, 46);
+  border-bottom: 1px solid rgb(46, 46, 46);
+}

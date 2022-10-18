@@ -1,3 +1,12 @@
+// Valores dos Inputs
+let horas = 0
+let minutos = 0
+let segundos = 0
+
+document.querySelector('#horas-estudando').value = horas
+document.querySelector('#minutos-estudando').value = minutos
+document.querySelector('#segundos-estudando').value = segundos
+
 // Intervalo do cronômetro
 let intervalo
 
@@ -42,12 +51,6 @@ function verificarValorH (input) {
 
 
 
-
-
-
-
-
-
 const btnComecarEstudando = document.querySelector('#comecar-estudando')
 btnComecarEstudando.addEventListener('click', cronometro)
 
@@ -59,12 +62,23 @@ function cronometro () {
 
 
 
+
+
+
 function decremento () {
   let horasEstudando = document.querySelector('#horas-estudando').value
   let minutosEstudando = document.querySelector('#minutos-estudando').value
   let segundosEstudando = document.querySelector('#segundos-estudando').value
 
-  if (segundosEstudando == '00') {
+  if (segundosEstudando === '00') {
+    clearInterval(intervalo)
+    return
+  }
+  if (minutosEstudando === '00') {
+    clearInterval(intervalo)
+    return
+  }
+  if (horasEstudando === '00') {
     clearInterval(intervalo)
     return
   }
@@ -73,8 +87,9 @@ function decremento () {
   let minutosEstudandoNumero = Number(minutosEstudando)
   let segundosEstudandoNumero = Number(segundosEstudando)
 
-  
-
+  document.querySelector('#segundos-estudando').value = segundosEstudandoNumero
+  document.querySelector('#minutos-estudando').value = minutosEstudandoNumero
+  document.querySelector('#horas-estudando').value = horasEstudandoNumero
 
   if (horasEstudandoNumero == 0 && minutosEstudandoNumero == 0 && segundosEstudandoNumero <= 0) {
     clearInterval(intervalo)
@@ -83,10 +98,8 @@ function decremento () {
     minutosEstudandoNumero--
     segundosEstudandoNumero = 60
   }
-  
 
   segundosEstudandoNumero--
-
 
   if (minutosEstudandoNumero < 0) {
     horasEstudandoNumero--
@@ -96,15 +109,4 @@ function decremento () {
   document.querySelector('#segundos-estudando').value = segundosEstudandoNumero
   document.querySelector('#minutos-estudando').value = minutosEstudandoNumero
   document.querySelector('#horas-estudando').value = horasEstudandoNumero
-  
-
-
-  
-
-
-  
-
-
-
-
 }

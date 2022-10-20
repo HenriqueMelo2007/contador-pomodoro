@@ -64,8 +64,14 @@ function pararCronometroD () {
 }
 
 function cronometroD () {
+  clearInterval(intervalo)
+
+  btnPararEstudando.classList.add('display-none')
+  btnComecarEstudando.classList.remove('display-none')
+
   btnComecarDescansando.classList.toggle('display-none')
   btnPararDescansando.classList.toggle('display-none')
+
   intervaloD = setInterval(decrementoD, 1000)
 }
 

@@ -84,13 +84,14 @@ button {
 
 input {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   background-color: transparent;
   color: white;
-  width: 2.4rem;
+  width: 3.2rem;
+  height: 2.35rem;
   outline: none;
   border-left: 1px solid rgb(75, 75, 75);
   border-top: 1px solid rgb(75, 75, 75);
-  border-right: 1px solid rgb(46, 46, 46);
-  border-bottom: 1px solid rgb(46, 46, 46);
+  border-right: 1px solid rgb(37, 37, 37);
+  border-bottom: 1px solid rgb(37, 37, 37);
 }

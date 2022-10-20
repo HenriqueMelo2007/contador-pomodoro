@@ -78,6 +78,10 @@ button {
   border-radius: 100px;
 }
 
+.display-none {
+  display: none;
+}
+
 input {
   text-align: center;
   font-size: 1.2rem;

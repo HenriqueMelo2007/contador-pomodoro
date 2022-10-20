@@ -1,23 +1,23 @@
 // Valores dos Inputs
-let horas = 0
-let minutos = 0
-let segundos = 0
+let horasD = 0
+let minutosD = 0
+let segundosD = 0
 
-document.querySelector('#horas-descansando').value = `0${horas}`
-document.querySelector('#minutos-descansando').value = `0${minutos}`
-document.querySelector('#segundos-descansando').value = `0${segundos}`
+document.querySelector('#horas-descansando').value = `0${horasD}`
+document.querySelector('#minutos-descansando').value = `0${minutosD}`
+document.querySelector('#segundos-descansando').value = `0${segundosD}`
 
 // Intervalo do cronômetro
-let intervalo
+let intervaloD
 
 // Inputs
-let inputHorasEstudando = document.querySelector('#horas-estudando')
-let inputMinutosEstudando = document.querySelector('#minutos-estudando')
-let inputSegundosEstudando = document.querySelector('#segundos-estudando')
+let inputHorasDescansando = document.querySelector('#horas-descansando')
+let inputMinutosDescansando = document.querySelector('#minutos-descansando')
+let inputSegundosDescansando = document.querySelector('#segundos-descansando')
 
-inputHorasEstudando.addEventListener('focusout', () => verificarValorH(inputHorasEstudando))
-inputMinutosEstudando.addEventListener('focusout', () => verificarValorMS(inputMinutosEstudando))
-inputSegundosEstudando.addEventListener('focusout', () => verificarValorMS(inputSegundosEstudando))
+inputHorasDescansando.addEventListener('focusout', () => verificarValorH(inputHorasDescansando))
+inputMinutosDescansando.addEventListener('focusout', () => verificarValorMS(inputMinutosDescansando))
+inputSegundosDescansando.addEventListener('focusout', () => verificarValorMS(inputSegundosDescansando))
 
 // Verificações de valores
 
@@ -47,59 +47,59 @@ function verificarValorH (input) {
 }
 
 // Botão que ativa o cronômetro
-const btnComecarEstudando = document.querySelector('#comecar-estudando')
-btnComecarEstudando.addEventListener('click', cronometro)
+const btnComecarDescansando = document.querySelector('#comecar-descansando')
+btnComecarDescansando.addEventListener('click', cronometro)
 
 function cronometro () {
-  intervalo = setInterval(decremento, 1000)
+  intervaloD = setInterval(decremento, 1000)
 }
 
 // Função de decremento do cronômetro
 function decremento () {
-  let horasEstudando = document.querySelector('#horas-estudando').value
-  let minutosEstudando = document.querySelector('#minutos-estudando').value
-  let segundosEstudando = document.querySelector('#segundos-estudando').value
+  let horasDescansando = document.querySelector('#horas-descansando').value
+  let minutosDescansando = document.querySelector('#minutos-descansando').value
+  let segundosDescansando = document.querySelector('#segundos-descansando').value
 
-  let horasEstudandoNumero = Number(horasEstudando)
-  let minutosEstudandoNumero = Number(minutosEstudando)
-  let segundosEstudandoNumero = Number(segundosEstudando)
+  let horasDescansandoNumero = Number(horasDescansando)
+  let minutosDescansandoNumero = Number(minutosDescansando)
+  let segundosDescansandoNumero = Number(segundosDescansando)
 
-  document.querySelector('#segundos-estudando').value = segundosEstudandoNumero
-  document.querySelector('#minutos-estudando').value = minutosEstudandoNumero
-  document.querySelector('#horas-estudando').value = horasEstudandoNumero
+  document.querySelector('#segundos-descansando').value = segundosDescansandoNumero
+  document.querySelector('#minutos-descansando').value = minutosDescansandoNumero
+  document.querySelector('#horas-descansando').value = horasDescansandoNumero
 
 
-  if (horasEstudandoNumero == 0 && minutosEstudandoNumero == 0 && segundosEstudandoNumero <= 0) {
-    clearInterval(intervalo)
+  if (horasDescansandoNumero == 0 && minutosDescansandoNumero == 0 && segundosDescansandoNumero <= 0) {
+    clearInterval(intervaloD)
     return
-  } else if (segundosEstudandoNumero == 0) {
-    minutosEstudandoNumero--
-    segundosEstudandoNumero = 60
+  } else if (segundosDescansandoNumero == 0) {
+    minutosDescansandoNumero--
+    segundosDescansandoNumero = 60
   }
 
-  segundosEstudandoNumero--
+  segundosDescansandoNumero--
 
-  if (minutosEstudandoNumero < 0) {
-    horasEstudandoNumero--
-    minutosEstudandoNumero = 59
+  if (minutosDescansandoNumero < 0) {
+    horasDescansandoNumero--
+    minutosDescansandoNumero = 59
   }
 
 
-  if (segundosEstudandoNumero < 10) {
-    document.querySelector('#segundos-estudando').value = `0${segundosEstudandoNumero}`
+  if (segundosDescansandoNumero < 10) {
+    document.querySelector('#segundos-descansando').value = `0${segundosDescansandoNumero}`
   } else {
-    document.querySelector('#segundos-estudando').value = segundosEstudandoNumero
+    document.querySelector('#segundos-descansando').value = segundosDescansandoNumero
   }
 
-  if (minutosEstudandoNumero < 10) {
-    document.querySelector('#minutos-estudando').value = `0${minutosEstudandoNumero}`
+  if (minutosDescansandoNumero < 10) {
+    document.querySelector('#minutos-descansando').value = `0${minutosDescansandoNumero}`
   } else {
-    document.querySelector('#minutos-estudando').value = minutosEstudandoNumero
+    document.querySelector('#minutos-descansando').value = minutosDescansandoNumero
   }
 
-  if (horasEstudandoNumero < 10) {
-    document.querySelector('#horas-estudando').value = `0${horasEstudandoNumero}`
+  if (horasDescansandoNumero < 10) {
+    document.querySelector('#horas-descansando').value = `0${horasDescansandoNumero}`
   } else {
-    document.querySelector('#horas-estudando').value = horasEstudandoNumero
+    document.querySelector('#horas-descansando').value = horasDescansandoNumero
   } 
 }

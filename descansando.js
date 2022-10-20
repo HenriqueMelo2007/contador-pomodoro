@@ -54,7 +54,18 @@ function verificarValorHD (input) {
 const btnComecarDescansando = document.querySelector('#comecar-descansando')
 btnComecarDescansando.addEventListener('click', cronometroD)
 
+const btnPararDescansando = document.querySelector('#parar-descansando')
+btnPararDescansando.addEventListener('click', pararCronometroD)
+
+function pararCronometroD () {
+  btnPararDescansando.classList.toggle('display-none')
+  btnComecarDescansando.classList.toggle('display-none')
+  clearInterval(intervaloD)
+}
+
 function cronometroD () {
+  btnComecarDescansando.classList.toggle('display-none')
+  btnPararDescansando.classList.toggle('display-none')
   intervaloD = setInterval(decrementoD, 1000)
 }
 

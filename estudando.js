@@ -54,7 +54,18 @@ function verificarValorH (input) {
 const btnComecarEstudando = document.querySelector('#comecar-estudando')
 btnComecarEstudando.addEventListener('click', cronometro)
 
+const btnPararEstudando = document.querySelector('#parar-estudando')
+btnPararEstudando.addEventListener('click', pararCronometro)
+
+function pararCronometro () {
+  btnComecarEstudando.classList.toggle('display-none')
+  btnPararEstudando.classList.toggle('display-none')
+  clearInterval(intervalo)
+}
+
 function cronometro () {
+  btnComecarEstudando.classList.toggle('display-none')
+  btnPararEstudando.classList.toggle('display-none')
   intervalo = setInterval(decremento, 1000)
 }
 

@@ -1,6 +1,6 @@
 // Valores dos Inputs
 let horasD = 0
-let minutosD = 0
+let minutosD = 5
 let segundosD = 0
 
 document.querySelector('#horas-descansando').value = `0${horasD}`

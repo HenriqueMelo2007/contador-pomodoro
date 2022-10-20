@@ -1,10 +1,10 @@
 // Valores dos Inputs
 let horas = 0
-let minutos = 0
+let minutos = 25
 let segundos = 0
 
 document.querySelector('#horas-estudando').value = `0${horas}`
-document.querySelector('#minutos-estudando').value = `0${minutos}`
+document.querySelector('#minutos-estudando').value = minutos
 document.querySelector('#segundos-estudando').value = `0${segundos}`
 
 // Intervalo do cronômetro
@@ -31,7 +31,7 @@ function verificarValorMS (input) {
     input.value = '00'
   }
 
-  if (valor < 10 && length < 2) {
+  if (valor < 10 && length == 1) {
     input.value = `0${input.value}`
   }
 }

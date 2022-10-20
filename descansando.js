@@ -15,14 +15,14 @@ let inputHorasDescansando = document.querySelector('#horas-descansando')
 let inputMinutosDescansando = document.querySelector('#minutos-descansando')
 let inputSegundosDescansando = document.querySelector('#segundos-descansando')
 
-inputHorasDescansando.addEventListener('focusout', () => verificarValorH(inputHorasDescansando))
-inputMinutosDescansando.addEventListener('focusout', () => verificarValorMS(inputMinutosDescansando))
-inputSegundosDescansando.addEventListener('focusout', () => verificarValorMS(inputSegundosDescansando))
+inputHorasDescansando.addEventListener('focusout', () => verificarValorHD(inputHorasDescansando))
+inputMinutosDescansando.addEventListener('focusout', () => verificarValorMSD(inputMinutosDescansando))
+inputSegundosDescansando.addEventListener('focusout', () => verificarValorMSD(inputSegundosDescansando))
 
 // Verificações de valores
 
 // minutos e segundos
-function verificarValorMS (input) {
+function verificarValorMSD (input) {
   let valor = Number(input.value)
   let length = input.value.length
 
@@ -31,31 +31,35 @@ function verificarValorMS (input) {
     input.value = '00'
   }
 
-  if (valor < 10 && length < 2) {
+  if (valor < 10 && length == 1) {
     input.value = `0${input.value}`
+  } else if (valor < 10 && length == 0) {
+    input.value = '00'
   }
 }
 
 // horas
-function verificarValorH (input) {
+function verificarValorHD (input) {
   let valor = Number(input.value)
   let length = input.value.length
 
-  if (valor < 10 && length < 2) {
+  if (valor < 10 && length == 1) {
     input.value = `0${input.value}`
+  } else if (valor < 10 && length == 0) {
+    input.value = '00'
   }
 }
 
 // Botão que ativa o cronômetro
 const btnComecarDescansando = document.querySelector('#comecar-descansando')
-btnComecarDescansando.addEventListener('click', cronometro)
+btnComecarDescansando.addEventListener('click', cronometroD)
 
-function cronometro () {
-  intervaloD = setInterval(decremento, 1000)
+function cronometroD () {
+  intervaloD = setInterval(decrementoD, 1000)
 }
 
 // Função de decremento do cronômetro
-function decremento () {
+function decrementoD () {
   let horasDescansando = document.querySelector('#horas-descansando').value
   let minutosDescansando = document.querySelector('#minutos-descansando').value
   let segundosDescansando = document.querySelector('#segundos-descansando').value

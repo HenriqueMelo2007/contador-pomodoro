@@ -33,6 +33,8 @@ function verificarValorMS (input) {
 
   if (valor < 10 && length == 1) {
     input.value = `0${input.value}`
+  } else if (valor < 10 && length == 0) {
+    input.value = '00'
   }
 }
 
@@ -41,8 +43,10 @@ function verificarValorH (input) {
   let valor = Number(input.value)
   let length = input.value.length
 
-  if (valor < 10 && length < 2) {
+  if (valor < 10 && length == 1) {
     input.value = `0${input.value}`
+  } else if (valor < 10 && length == 0) {
+    input.value = '00'
   }
 }
 

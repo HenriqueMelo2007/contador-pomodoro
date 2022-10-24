@@ -54,22 +54,15 @@ function verificarValorH (input) {
 const botaoComecarEstudando = document.querySelector('#comecar-estudando')
 botaoComecarEstudando.addEventListener('click', () => cronometro(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando))
 
-//
-
 const botaoComecarDescansando = document.querySelector('#comecar-descansando')
 botaoComecarDescansando.addEventListener('click', () => cronometro(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando))
 
-
-
-
 // Botões que param o cronômetro
 const botaoPararEstudando = document.querySelector('#parar-estudando')
-botaoPararEstudando.addEventListener('click', pararCronometro)
-
-//
+botaoPararEstudando.addEventListener('click', () => pararCronometro(botaoPararEstudando, botaoComecarEstudando))
 
 const botaoPararDescansando = document.querySelector('#parar-descansando')
-botaoPararDescansando.addEventListener('click', pararCronometro)
+botaoPararDescansando.addEventListener('click', () => pararCronometro(botaoPararDescansando, botaoComecarDescansando))
 
 
 
@@ -83,11 +76,13 @@ function cronometro (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundario
   botaoSecundarioParar.classList.add('display-none')
 }
 
-function pararCronometro () {
-  btnComecarEstudando.classList.toggle('display-none')
-  btnPararEstudando.classList.toggle('display-none')
-  clearInterval(intervalo)
+function pararCronometro (botaoParar, botaoComecar) {
+  botaoParar.classList.toggle('display-none')
+  botaoComecar.classList.toggle('display-none')
 }
+
+
+
 
 // Função de decremento do cronômetro
 function decremento () {

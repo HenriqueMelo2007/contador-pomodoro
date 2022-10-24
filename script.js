@@ -52,14 +52,17 @@ function verificarValorH (input) {
 
 // Botões que ativam o cronômetro
 const botaoComecarEstudando = document.querySelector('#comecar-estudando')
-botaoComecarEstudando.addEventListener('click', () => cronometro(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando))
+botaoComecarEstudando.addEventListener('click', () => cronometro(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando, inputHorasEstudando.value, inputMinutosEstudando.value, inputSegundosEstudando.value))
+
 
 const botaoComecarDescansando = document.querySelector('#comecar-descansando')
-botaoComecarDescansando.addEventListener('click', () => cronometro(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando))
+botaoComecarDescansando.addEventListener('click', () => cronometro(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando, inputHorasDescansando.value, inputMinutosDescansando.value, inputSegundosDescansando.value))
+
 
 // Botões que param o cronômetro
 const botaoPararEstudando = document.querySelector('#parar-estudando')
 botaoPararEstudando.addEventListener('click', () => pararCronometro(botaoPararEstudando, botaoComecarEstudando))
+
 
 const botaoPararDescansando = document.querySelector('#parar-descansando')
 botaoPararDescansando.addEventListener('click', () => pararCronometro(botaoPararDescansando, botaoComecarDescansando))
@@ -68,35 +71,30 @@ botaoPararDescansando.addEventListener('click', () => pararCronometro(botaoParar
 
 
 
-function cronometro (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundarioComecar, botaoSecundarioParar) {
+function cronometro (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundarioComecar, botaoSecundarioParar, valorInputHoras, valorInputMinutos, valorInputSegundos) {
   botaoPrincipalComecar.classList.toggle('display-none')
   botaoPrincipalParar.classList.toggle('display-none')
 
   botaoSecundarioComecar.classList.remove('display-none')
   botaoSecundarioParar.classList.add('display-none')
+
+  let horas = valorInputHoras
+  let minutos = valorInputMinutos
+  let segundos = valorInputSegundos
+
+
+  console.log(horas)
+  console.log(minutos)
+  console.log(segundos)
+
+  intervalo = setInterval(decremento, 1000)
 }
-
-function pararCronometro (botaoParar, botaoComecar) {
-  botaoParar.classList.toggle('display-none')
-  botaoComecar.classList.toggle('display-none')
-}
-
-
 
 
 // Função de decremento do cronômetro
-function decremento () {
-  let horasEstudando = document.querySelector('#horas-estudando').value
-  let minutosEstudando = document.querySelector('#minutos-estudando').value
-  let segundosEstudando = document.querySelector('#segundos-estudando').value
+function decremento (horas, minutos, segundos) {
+ 
 
-  let horasEstudandoNumero = Number(horasEstudando)
-  let minutosEstudandoNumero = Number(minutosEstudando)
-  let segundosEstudandoNumero = Number(segundosEstudando)
-
-  document.querySelector('#segundos-estudando').value = segundosEstudandoNumero
-  document.querySelector('#minutos-estudando').value = minutosEstudandoNumero
-  document.querySelector('#horas-estudando').value = horasEstudandoNumero
 
 
   if (horasEstudandoNumero == 0 && minutosEstudandoNumero == 0 && segundosEstudandoNumero <= 0) {
@@ -109,27 +107,19 @@ function decremento () {
 
   segundosEstudandoNumero--
 
-  if (minutosEstudandoNumero < 0) {
+  if (minutosEstudandoNumero == 0) {
     horasEstudandoNumero--
     minutosEstudandoNumero = 59
   }
+}
 
 
-  if (segundosEstudandoNumero < 10) {
-    document.querySelector('#segundos-estudando').value = `0${segundosEstudandoNumero}`
-  } else {
-    document.querySelector('#segundos-estudando').value = segundosEstudandoNumero
-  }
 
-  if (minutosEstudandoNumero < 10) {
-    document.querySelector('#minutos-estudando').value = `0${minutosEstudandoNumero}`
-  } else {
-    document.querySelector('#minutos-estudando').value = minutosEstudandoNumero
-  }
 
-  if (horasEstudandoNumero < 10) {
-    document.querySelector('#horas-estudando').value = `0${horasEstudandoNumero}`
-  } else {
-    document.querySelector('#horas-estudando').value = horasEstudandoNumero
-  } 
+
+function pararCronometro (botaoParar, botaoComecar) {
+  botaoParar.classList.toggle('display-none')
+  botaoComecar.classList.toggle('display-none')
+
+  clearInterval(intervalo)
 }

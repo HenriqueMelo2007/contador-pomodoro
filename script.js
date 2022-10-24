@@ -51,41 +51,42 @@ function verificarValorH (input) {
 }
 
 // Botões que ativam o cronômetro
-const btnComecarEstudando = document.querySelector('#comecar-estudando')
-btnComecarEstudando.addEventListener('click', cronometro)
+const botaoComecarEstudando = document.querySelector('#comecar-estudando')
+botaoComecarEstudando.addEventListener('click', () => cronometro(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando))
 
-const btnComecarDescansando = document.querySelector('#comecar-descansando')
-btnComecarDescansando.addEventListener('click', cronometro)
+//
+
+const botaoComecarDescansando = document.querySelector('#comecar-descansando')
+botaoComecarDescansando.addEventListener('click', () => cronometro(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando))
+
 
 
 
 // Botões que param o cronômetro
-const btnPararEstudando = document.querySelector('#parar-estudando')
-btnPararEstudando.addEventListener('click', pararCronometro)
+const botaoPararEstudando = document.querySelector('#parar-estudando')
+botaoPararEstudando.addEventListener('click', pararCronometro)
 
-const btnPararDescansando = document.querySelector('#parar-descansando')
-btnPararDescansando.addEventListener('click', pararCronometro)
+//
+
+const botaoPararDescansando = document.querySelector('#parar-descansando')
+botaoPararDescansando.addEventListener('click', pararCronometro)
 
 
 
 
+
+function cronometro (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundarioComecar, botaoSecundarioParar) {
+  botaoPrincipalComecar.classList.toggle('display-none')
+  botaoPrincipalParar.classList.toggle('display-none')
+
+  botaoSecundarioComecar.classList.remove('display-none')
+  botaoSecundarioParar.classList.add('display-none')
+}
 
 function pararCronometro () {
   btnComecarEstudando.classList.toggle('display-none')
   btnPararEstudando.classList.toggle('display-none')
   clearInterval(intervalo)
-}
-
-function cronometro () {
-  clearInterval(intervaloD)
-
-  btnPararDescansando.classList.add('display-none')
-  btnComecarDescansando.classList.remove('display-none')
-
-  btnComecarEstudando.classList.toggle('display-none')
-  btnPararEstudando.classList.toggle('display-none')
-  
-  intervalo = setInterval(decremento, 1000)
 }
 
 // Função de decremento do cronômetro

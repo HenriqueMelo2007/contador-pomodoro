@@ -31,15 +31,6 @@ h3 {
   margin: 0 0 15px;
 }
 
-a {
-  text-decoration: none;
-  background-color: rgb(255, 255, 255);
-  border-radius: 40px;
-  padding: 5px 10px;
-  color: black;
-  margin-bottom: 25px;
-}
-
 .contador-pomodoro {
   height: 70%;
   width: 92vw;

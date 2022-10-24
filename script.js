@@ -1,12 +1,3 @@
-// Valores dos Inputs
-let horas = 0
-let minutos = 25
-let segundos = 0
-
-document.querySelector('#horas-estudando').value = `0${horas}`
-document.querySelector('#minutos-estudando').value = minutos
-document.querySelector('#segundos-estudando').value = `0${segundos}`
-
 // Intervalo do cronômetro
 let intervalo
 
@@ -19,8 +10,17 @@ inputHorasEstudando.addEventListener('focusout', () => verificarValorH(inputHora
 inputMinutosEstudando.addEventListener('focusout', () => verificarValorMS(inputMinutosEstudando))
 inputSegundosEstudando.addEventListener('focusout', () => verificarValorMS(inputSegundosEstudando))
 
-// Verificações de valores
+//
 
+let inputHorasDescansando = document.querySelector('#horas-descansando')
+let inputMinutosDescansando = document.querySelector('#minutos-descansando')
+let inputSegundosDescansando = document.querySelector('#segundos-descansando')
+
+inputHorasDescansando.addEventListener('focusout', () => verificarValorH(inputHorasDescansando))
+inputMinutosDescansando.addEventListener('focusout', () => verificarValorMS(inputMinutosDescansando))
+inputSegundosDescansando.addEventListener('focusout', () => verificarValorMS(inputSegundosDescansando))
+
+// Verificações de valores
 // minutos e segundos
 function verificarValorMS (input) {
   let valor = Number(input.value)
@@ -147,7 +147,7 @@ function decremento () {
 
 
 
-
+/*
 // Valores dos Inputs
 let horasD = 0
 let minutosD = 5
@@ -161,13 +161,7 @@ document.querySelector('#segundos-descansando').value = `0${segundosD}`
 let intervaloD
 
 // Inputs
-let inputHorasDescansando = document.querySelector('#horas-descansando')
-let inputMinutosDescansando = document.querySelector('#minutos-descansando')
-let inputSegundosDescansando = document.querySelector('#segundos-descansando')
 
-inputHorasDescansando.addEventListener('focusout', () => verificarValorHD(inputHorasDescansando))
-inputMinutosDescansando.addEventListener('focusout', () => verificarValorMSD(inputMinutosDescansando))
-inputSegundosDescansando.addEventListener('focusout', () => verificarValorMSD(inputSegundosDescansando))
 
 // Verificações de valores
 
@@ -273,4 +267,4 @@ function decrementoD () {
   } else {
     document.querySelector('#horas-descansando').value = horasDescansandoNumero
   } 
-}
+} */

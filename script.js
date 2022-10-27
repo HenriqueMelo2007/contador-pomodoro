@@ -98,10 +98,7 @@ function atualizacaoDeValorInputsDescansando () {
   
 }
 
-function incrementar () {
-  valorInputHorasEstudandoAtualizado++
-  console.log(valorInputHorasEstudandoAtualizado)
-}
+
 
 
 // Botões que ativam o cronômetro
@@ -125,13 +122,7 @@ botaoComecarDescansando.addEventListener('click', () => cronometro(valorInputHor
 
 
 
-function trocaDeBotoes (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundarioComecar, botaoSecundarioParar) {
-  botaoPrincipalComecar.classList.toggle('display-none')
-  botaoPrincipalParar.classList.toggle('display-none')
 
-  botaoSecundarioComecar.classList.remove('display-none')
-  botaoSecundarioParar.classList.add('display-none')
-}
 
 
 
@@ -153,18 +144,18 @@ function decremento (horas, minutos, segundos, inputHoras, inputMinutos, inputSe
   /*if (horasN == 0 && minutosN == 0 && segundosN <= 0) {
     clearInterval(intervalo)
     return
-  } else if (segundosN == 0) {
+  } else if (segundosN < 0) {
     minutosN--
-    segundosN = 60
+    segundosN = 59
   }
 
   segundosN--
 
   
 
-  if (minutosN == 0) {
+  if (minutosN < 0) {
     horasN--
-    minutosN = 60
+    minutosN = 59
   }
 
 
@@ -189,7 +180,13 @@ function decremento (horas, minutos, segundos, inputHoras, inputMinutos, inputSe
 
 
 
+function trocaDeBotoes (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundarioComecar, botaoSecundarioParar) {
+  botaoPrincipalComecar.classList.toggle('display-none')
+  botaoPrincipalParar.classList.toggle('display-none')
 
+  botaoSecundarioComecar.classList.remove('display-none')
+  botaoSecundarioParar.classList.add('display-none')
+}
 
 
 

@@ -61,22 +61,19 @@ function verificarValorH (input) {
 }
 
 
-let valorInputHorasEstudandoAtualizado 
-let valorInputMinutosEstudandoAtualizado 
-let valorInputSegundosEstudandoAtualizado 
+let horasEstudandoAtualizado 
+let minutosEstudandoAtualizado 
+let segundosEstudandoAtualizado 
 
 function atualizacaoDeValorInputsEstudando () {
-  valorInputHorasEstudando = Number(document.querySelector('#horas-estudando').value)
-  valorInputMinutosEstudando = Number(document.querySelector('#minutos-estudando').value)
-  valorInputSegundosEstudando = Number(document.querySelector('#segundos-estudando').value)
+  horasEstudandoAtualizado = Number(document.querySelector('#horas-estudando').value)
+  minutosEstudandoAtualizado = Number(document.querySelector('#minutos-estudando').value)
+  segundosEstudandoAtualizado = Number(document.querySelector('#segundos-estudando').value)
 
-  
-
-
-  valorInputHorasEstudandoAtualizado = valorInputHorasEstudando
-  valorInputMinutosEstudandoAtualizado = valorInputMinutosEstudando
-  valorInputSegundosEstudandoAtualizado = valorInputSegundosEstudando
+  cronometro(inputHorasEstudando, inputMinutosEstudando, inputSegundosEstudando)
 }
+
+
 
 
 
@@ -107,7 +104,7 @@ botaoComecarEstudando.addEventListener('click', () => atualizacaoDeValorInputsEs
 botaoComecarEstudando.addEventListener('click', () => trocaDeBotoes(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando))
 
 
-botaoComecarEstudando.addEventListener('click', () => cronometro(valorInputHorasEstudandoAtualizado, valorInputMinutosEstudandoAtualizado, valorInputSegundosEstudandoAtualizado, inputHorasEstudando, inputMinutosEstudando, inputSegundosEstudando))
+
 
 
 
@@ -126,57 +123,112 @@ botaoComecarDescansando.addEventListener('click', () => cronometro(valorInputHor
 
 
 
-function cronometro (valorInputHoras, valorInputMinutos, valorInputSegundos, inputHoras, inputMinutos, inputSegundos) {
-  let horas = valorInputHoras
-  let minutos = valorInputMinutos
-  let segundos = valorInputSegundos
-
-  intervalo = setInterval(() => decremento(horas, minutos, segundos, inputHoras, inputMinutos, inputSegundos), 1000)
+function cronometro (inputHoras, inputMinutos, inputSegundos) {
+  intervalo = setInterval(() => decremento(inputHoras, inputMinutos, inputSegundos), 1000)
 }
+
 
 
 // Função de decremento do cronômetro
-function decremento (horas, minutos, segundos, inputHoras, inputMinutos, inputSegundos) {
+function decremento (inputHoras, inputMinutos, inputSegundos) {
+  if (inputSegundos.id == 'segundos-estudando') {
 
-  
-
-
-  /*if (horasN == 0 && minutosN == 0 && segundosN <= 0) {
+    if (horasEstudandoAtualizado == 0 && minutosEstudandoAtualizado == 0 && segundosEstudandoAtualizado <= 0) {
     clearInterval(intervalo)
     return
-  } else if (segundosN < 0) {
-    minutosN--
-    segundosN = 59
+  } else if (segundosEstudandoAtualizado == 0) {
+    minutosEstudandoAtualizado--
+    segundosEstudandoAtualizado = 60
   }
 
-  segundosN--
+  segundosEstudandoAtualizado--
 
   
 
-  if (minutosN < 0) {
-    horasN--
-    minutosN = 59
+  if (minutosEstudandoAtualizado < 0) {
+    horasEstudandoAtualizado--
+    minutosEstudandoAtualizado = 59
   }
 
 
-  if (segundosN < 10) {
-    inputSegundos.value = `0${segundosN}`
+  if (segundosEstudandoAtualizado < 10) {
+    inputSegundos.value = `0${segundosEstudandoAtualizado}`
   } else {
-    inputSegundos.value = segundosN
+    inputSegundos.value = segundosEstudandoAtualizado
   }
 
-  if (minutosN < 10) {
-    inputMinutos.value = `0${minutosN}`
+  if (minutosEstudandoAtualizado < 10) {
+    inputMinutos.value = `0${minutosEstudandoAtualizado}`
   } else {
-    inputMinutos.value = minutosN
+    inputMinutos.value = minutosEstudandoAtualizado
   }
 
-  if (horasN < 10) {
-    inputHoras.value = `0${horasN}`
+  if (horasEstudandoAtualizado < 10) {
+    inputHoras.value = `0${horasEstudandoAtualizado}`
   } else {
-    inputHoras.value = horasN
-  } */
+    inputHoras.value = horasEstudandoAtualizado
+  }
+  }
+
+  
+
+
+  /*if (horas == 0 && minutos == 0 && segundos <= 0) {
+    clearInterval(intervalo)
+    return
+  } else if (segundos < 0) {
+    minutos--
+    segundos = 59
+  }
+
+  segundos--
+
+  
+
+  if (minutos < 0) {
+    horas--
+    minutos = 59
+  }
+
+
+  if (segundos < 10) {
+    inputSegundos.value = `0${segundos}`
+  } else {
+    inputSegundos.value = segundos
+  }
+
+  if (minutos < 10) {
+    inputMinutos.value = `0${minutos}`
+  } else {
+    inputMinutos.value = minutos
+  }
+
+  if (horas < 10) {
+    inputHoras.value = `0${horas}`
+  } else {
+    inputHoras.value = horas
+  }*/
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

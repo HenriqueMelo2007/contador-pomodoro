@@ -66,6 +66,8 @@ let minutosEstudandoAtualizado
 let segundosEstudandoAtualizado 
 
 function atualizacaoDeValoresEstudando () {
+  clearInterval(intervalo)
+
   horasEstudandoAtualizado = Number(document.querySelector('#horas-estudando').value)
   minutosEstudandoAtualizado = Number(document.querySelector('#minutos-estudando').value)
   segundosEstudandoAtualizado = Number(document.querySelector('#segundos-estudando').value)
@@ -74,15 +76,13 @@ function atualizacaoDeValoresEstudando () {
 }
 
 
-
-
-
-
 let horasDescansandoAtualizado 
 let minutosDescansandoAtualizado 
 let segundosDescansandoAtualizado 
 
 function atualizacaoDeValoresDescansando () {
+  clearInterval(intervalo)
+
   horasDescansandoAtualizado = Number(document.querySelector('#horas-descansando').value)
   minutosDescansandoAtualizado = Number(document.querySelector('#minutos-descansando').value)
   segundosDescansandoAtualizado = Number(document.querySelector('#segundos-descansando').value)
@@ -90,15 +90,10 @@ function atualizacaoDeValoresDescansando () {
   cronometro(inputHorasDescansando, inputMinutosDescansando, inputSegundosDescansando)
 }
 
-
-
-
 // Botões que ativam o cronômetro
 const botaoComecarEstudando = document.querySelector('#comecar-estudando')
 botaoComecarEstudando.addEventListener('click', () => atualizacaoDeValoresEstudando())
 botaoComecarEstudando.addEventListener('click', () => trocaDeBotoes(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando))
-
-
 
 
 const botaoComecarDescansando = document.querySelector('#comecar-descansando')
@@ -106,12 +101,9 @@ botaoComecarDescansando.addEventListener('click', () => atualizacaoDeValoresDesc
 botaoComecarDescansando.addEventListener('click', () => trocaDeBotoes(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando))
 
 
-
-
 function cronometro (inputHoras, inputMinutos, inputSegundos) {
   intervalo = setInterval(() => decremento(inputHoras, inputMinutos, inputSegundos), 1000)
 }
-
 
 
 // Função de decremento do cronômetro
@@ -128,13 +120,10 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 
   segundosEstudandoAtualizado--
 
-  
-
   if (minutosEstudandoAtualizado < 0) {
     horasEstudandoAtualizado--
     minutosEstudandoAtualizado = 59
   }
-
 
   if (segundosEstudandoAtualizado < 10) {
     inputSegundos.value = `0${segundosEstudandoAtualizado}`
@@ -169,8 +158,6 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 
   segundosDescansandoAtualizado--
 
-  
-
   if (minutosDescansandoAtualizado < 0) {
     horasDescansandoAtualizado--
     minutosDescansandoAtualizado = 59
@@ -198,27 +185,6 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function trocaDeBotoes (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundarioComecar, botaoSecundarioParar) {
   botaoPrincipalComecar.classList.toggle('display-none')
   botaoPrincipalParar.classList.toggle('display-none')
@@ -228,11 +194,9 @@ function trocaDeBotoes (botaoPrincipalComecar, botaoPrincipalParar, botaoSecunda
 }
 
 
-
 // Botões que param o cronômetro
 const botaoPararEstudando = document.querySelector('#parar-estudando')
 botaoPararEstudando.addEventListener('click', () => pararCronometro(botaoPararEstudando, botaoComecarEstudando))
-
 
 const botaoPararDescansando = document.querySelector('#parar-descansando')
 botaoPararDescansando.addEventListener('click', () => pararCronometro(botaoPararDescansando, botaoComecarDescansando))

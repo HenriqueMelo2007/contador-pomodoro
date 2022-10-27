@@ -36,6 +36,11 @@ function verificarValorMS (input) {
   let valor = Number(input.value)
   let length = input.value.length
 
+  if (typeof valor != Number) {
+    alert('Digite valores numéricos')
+    input.value = '00'
+  }
+
   if (valor < 0 || valor > 59) {
     alert('Digite valores entre 00 e 59')
     input.value = '00'
@@ -53,6 +58,11 @@ function verificarValorH (input) {
   let valor = Number(input.value)
   let length = input.value.length
 
+  if (typeof valor != Number) {
+    alert('Digite valores numéricos')
+    input.value = '00'
+  }
+
   if (valor < 10 && length == 1) {
     input.value = `0${input.value}`
   } else if (valor < 10 && length == 0) {
@@ -66,6 +76,7 @@ let minutosEstudandoAtualizado
 let segundosEstudandoAtualizado 
 
 function atualizacaoDeValoresEstudando () {
+  trocaDeBotoes(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando)
   clearInterval(intervalo)
 
   horasEstudandoAtualizado = Number(document.querySelector('#horas-estudando').value)
@@ -81,6 +92,7 @@ let minutosDescansandoAtualizado
 let segundosDescansandoAtualizado 
 
 function atualizacaoDeValoresDescansando () {
+  trocaDeBotoes(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando)
   clearInterval(intervalo)
 
   horasDescansandoAtualizado = Number(document.querySelector('#horas-descansando').value)
@@ -93,12 +105,10 @@ function atualizacaoDeValoresDescansando () {
 // Botões que ativam o cronômetro
 const botaoComecarEstudando = document.querySelector('#comecar-estudando')
 botaoComecarEstudando.addEventListener('click', () => atualizacaoDeValoresEstudando())
-botaoComecarEstudando.addEventListener('click', () => trocaDeBotoes(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando))
 
 
 const botaoComecarDescansando = document.querySelector('#comecar-descansando')
 botaoComecarDescansando.addEventListener('click', () => atualizacaoDeValoresDescansando())
-botaoComecarDescansando.addEventListener('click', () => trocaDeBotoes(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando))
 
 
 function cronometro (inputHoras, inputMinutos, inputSegundos) {

@@ -36,11 +36,6 @@ function verificarValorMS (input) {
   let valor = Number(input.value)
   let length = input.value.length
 
-  if (typeof valor != Number) {
-    alert('Digite valores numéricos')
-    input.value = '00'
-  }
-
   if (valor < 0 || valor > 59) {
     alert('Digite valores entre 00 e 59')
     input.value = '00'
@@ -57,11 +52,6 @@ function verificarValorMS (input) {
 function verificarValorH (input) {
   let valor = Number(input.value)
   let length = input.value.length
-
-  if (typeof valor != Number) {
-    alert('Digite valores numéricos')
-    input.value = '00'
-  }
 
   if (valor < 10 && length == 1) {
     input.value = `0${input.value}`

@@ -4,6 +4,9 @@ let intervalo
 // Alarme do cronômetro
 let alarme = document.querySelector('#alarme')
 
+// Restaurador do tempo do cronômetro
+let valoresIniciais = []
+
 // Inputs
 let inputHorasEstudando = document.querySelector('#horas-estudando')
 let inputMinutosEstudando = document.querySelector('#minutos-estudando')
@@ -66,6 +69,11 @@ function atualizacaoDeValoresEstudando () {
   minutosEstudando = Number(document.querySelector('#minutos-estudando').value)
   segundosEstudando = Number(document.querySelector('#segundos-estudando').value)
 
+  valoresIniciais = []
+  valoresIniciais.push(horasEstudando)
+  valoresIniciais.push(minutosEstudando)
+  valoresIniciais.push(segundosEstudando)
+
   cronometro(inputHorasEstudando, inputMinutosEstudando, inputSegundosEstudando)
 }
 
@@ -80,6 +88,11 @@ function atualizacaoDeValoresDescansando () {
   horasDescansando = Number(document.querySelector('#horas-descansando').value)
   minutosDescansando = Number(document.querySelector('#minutos-descansando').value)
   segundosDescansando = Number(document.querySelector('#segundos-descansando').value)
+
+  valoresIniciais = []
+  valoresIniciais.push(horasDescansando)
+  valoresIniciais.push(minutosDescansando)
+  valoresIniciais.push(segundosDescansando)
 
   cronometro(inputHorasDescansando, inputMinutosDescansando, inputSegundosDescansando)
 }
@@ -102,10 +115,33 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
   if (inputSegundos.id == 'segundos-estudando') {
 
     if (horasEstudando == 0 && minutosEstudando == 0 && segundosEstudando <= 0) {
-    clearInterval(intervalo)
+
     alarme.play()
-    alert('Seu tempo estudando terminou! Pode ir descansar.')
+    function alertaEstudando () {
+      alert('Seu tempo de estudo acabou! Pode descansar.')
+    }
+    setTimeout(alertaEstudando, 3100)
+    clearInterval(intervalo)
+
+    if (valoresIniciais[0] < 10) {
+      inputHorasEstudando.value = `0${valoresIniciais[0]}`
+    } else {
+      inputHorasEstudando.value = valoresIniciais[0]
+    }
+
+    if (valoresIniciais[1] < 10) {
+      inputMinutosEstudando.value = `0${valoresIniciais[1]}`
+    } else {
+      inputMinutosEstudando.value = valoresIniciais[1]
+    }
+
+    if (valoresIniciais[2] < 10) {
+      inputSegundosEstudando.value = `0${valoresIniciais[2]}`
+    } else {
+      inputSegundosEstudando.value = valoresIniciais[2]
+    }
     return
+
   } else if (segundosEstudando == 0) {
     minutosEstudando--
     segundosEstudando = 60
@@ -135,18 +171,37 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
   } else {
     inputHoras.value = horasEstudando
   }
-  }
-
-
-
-  if (inputSegundos.id == 'segundos-descansando') {
+  } else if (inputSegundos.id == 'segundos-descansando') {
 
     if (horasDescansando == 0 && minutosDescansando == 0 && segundosDescansando <= 0) {
-    clearInterval(intervalo)
-    alarme.play()
-    alert('Seu descanso chegou ao fim! Volte a estudar.')
-    return
-  } else if (segundosDescansando == 0) {
+
+      alarme.play()
+      function alertaDescansando () {
+        alert('Seu descanso chegou ao fim! Volte a estudar.')
+      }
+      setTimeout(alertaDescansando, 3100)
+      clearInterval(intervalo)
+  
+      if (valoresIniciais[0] < 10) {
+        inputHorasDescansando.value = `0${valoresIniciais[0]}`
+      } else {
+        inputHorasDescansando.value = valoresIniciais[0]
+      }
+  
+      if (valoresIniciais[1] < 10) {
+        inputMinutosDescansando.value = `0${valoresIniciais[1]}`
+      } else {
+        inputMinutosDescansando.value = valoresIniciais[1]
+      }
+  
+      if (valoresIniciais[2] < 10) {
+        inputSegundosDescansando.value = `0${valoresIniciais[2]}`
+      } else {
+        inputSegundosDescansando.value = valoresIniciais[2]
+      }
+      return
+  
+    } else if (segundosDescansando == 0) {
     minutosDescansando--
     segundosDescansando = 60
   }
@@ -157,7 +212,6 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
     horasDescansando--
     minutosDescansando = 59
   }
-
 
   if (segundosDescansando < 10) {
     inputSegundos.value = `0${segundosDescansando}`

@@ -116,6 +116,7 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 
     if (horasEstudando == 0 && minutosEstudando == 0 && segundosEstudando <= 0) {
 
+    trocaDeBotoes(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando)
     alarme.play()
     function alertaEstudando () {
       alert('Seu tempo de estudo acabou! Pode descansar.')
@@ -175,6 +176,7 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 
     if (horasDescansando == 0 && minutosDescansando == 0 && segundosDescansando <= 0) {
 
+      trocaDeBotoes(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando)
       alarme.play()
       function alertaDescansando () {
         alert('Seu descanso chegou ao fim! Volte a estudar.')
@@ -259,11 +261,15 @@ function pararCronometro (botaoParar, botaoComecar) {
 // Botões que zeram o cronômetro
 function zerar (span) {
   if (span.id == 'zerar-estudando') {
+    botaoComecarEstudando.classList.remove('display-none')
+    botaoPararEstudando.classList.add('display-none')
     clearInterval(intervalo)
     inputHorasEstudando.value = '00'
     inputMinutosEstudando.value = '00'
     inputSegundosEstudando.value = '00'
   } else if (span.id == 'zerar-descansando') {
+    botaoComecarDescansando.classList.remove('display-none')
+    botaoPararDescansando.classList.add('display-none')
     clearInterval(intervalo)
     inputHorasDescansando.value = '00'
     inputMinutosDescansando.value = '00'

@@ -6,7 +6,6 @@ let inputHorasEstudando = document.querySelector('#horas-estudando')
 let inputMinutosEstudando = document.querySelector('#minutos-estudando')
 let inputSegundosEstudando = document.querySelector('#segundos-estudando')
 
-
 inputHorasEstudando.addEventListener('focusout', () => verificarValorH(inputHorasEstudando))
 inputMinutosEstudando.addEventListener('focusout', () => verificarValorMS(inputMinutosEstudando))
 inputSegundosEstudando.addEventListener('focusout', () => verificarValorMS(inputSegundosEstudando))
@@ -20,15 +19,6 @@ let inputSegundosDescansando = document.querySelector('#segundos-descansando')
 inputHorasDescansando.addEventListener('focusout', () => verificarValorH(inputHorasDescansando))
 inputMinutosDescansando.addEventListener('focusout', () => verificarValorMS(inputMinutosDescansando))
 inputSegundosDescansando.addEventListener('focusout', () => verificarValorMS(inputSegundosDescansando))
-
-// Valor dos inputs
-let valorInputHorasEstudando
-let valorInputMinutosEstudando
-let valorInputSegundosEstudando
-
-let valorInputHorasDescansando = document.querySelector('#horas-descansando').value
-let valorInputMinutosDescansando = document.querySelector('#minutos-descansando').value
-let valorInputSegundosDescansando = document.querySelector('#segundos-descansando').value
 
 // Verificações de valores
 // minutos e segundos
@@ -61,33 +51,32 @@ function verificarValorH (input) {
 }
 
 
-let horasEstudandoAtualizado 
-let minutosEstudandoAtualizado 
-let segundosEstudandoAtualizado 
+let horasEstudando
+let minutosEstudando
+let segundosEstudando
 
 function atualizacaoDeValoresEstudando () {
   trocaDeBotoes(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando)
   clearInterval(intervalo)
 
-  horasEstudandoAtualizado = Number(document.querySelector('#horas-estudando').value)
-  minutosEstudandoAtualizado = Number(document.querySelector('#minutos-estudando').value)
-  segundosEstudandoAtualizado = Number(document.querySelector('#segundos-estudando').value)
+  horasEstudando = Number(document.querySelector('#horas-estudando').value)
+  minutosEstudando = Number(document.querySelector('#minutos-estudando').value)
+  segundosEstudando = Number(document.querySelector('#segundos-estudando').value)
 
   cronometro(inputHorasEstudando, inputMinutosEstudando, inputSegundosEstudando)
 }
 
-
-let horasDescansandoAtualizado 
-let minutosDescansandoAtualizado 
-let segundosDescansandoAtualizado 
+let horasDescansando 
+let minutosDescansando 
+let segundosDescansando
 
 function atualizacaoDeValoresDescansando () {
   trocaDeBotoes(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando)
   clearInterval(intervalo)
 
-  horasDescansandoAtualizado = Number(document.querySelector('#horas-descansando').value)
-  minutosDescansandoAtualizado = Number(document.querySelector('#minutos-descansando').value)
-  segundosDescansandoAtualizado = Number(document.querySelector('#segundos-descansando').value)
+  horasDescansando = Number(document.querySelector('#horas-descansando').value)
+  minutosDescansando = Number(document.querySelector('#minutos-descansando').value)
+  segundosDescansando = Number(document.querySelector('#segundos-descansando').value)
 
   cronometro(inputHorasDescansando, inputMinutosDescansando, inputSegundosDescansando)
 }
@@ -96,11 +85,10 @@ function atualizacaoDeValoresDescansando () {
 const botaoComecarEstudando = document.querySelector('#comecar-estudando')
 botaoComecarEstudando.addEventListener('click', () => atualizacaoDeValoresEstudando())
 
-
 const botaoComecarDescansando = document.querySelector('#comecar-descansando')
 botaoComecarDescansando.addEventListener('click', () => atualizacaoDeValoresDescansando())
 
-
+// Função cronômetro
 function cronometro (inputHoras, inputMinutos, inputSegundos) {
   intervalo = setInterval(() => decremento(inputHoras, inputMinutos, inputSegundos), 1000)
 }
@@ -110,37 +98,37 @@ function cronometro (inputHoras, inputMinutos, inputSegundos) {
 function decremento (inputHoras, inputMinutos, inputSegundos) {
   if (inputSegundos.id == 'segundos-estudando') {
 
-    if (horasEstudandoAtualizado == 0 && minutosEstudandoAtualizado == 0 && segundosEstudandoAtualizado <= 0) {
+    if (horasEstudando == 0 && minutosEstudando == 0 && segundosEstudando <= 0) {
     clearInterval(intervalo)
     return
-  } else if (segundosEstudandoAtualizado == 0) {
-    minutosEstudandoAtualizado--
-    segundosEstudandoAtualizado = 60
+  } else if (segundosEstudando == 0) {
+    minutosEstudando--
+    segundosEstudando = 60
   }
 
-  segundosEstudandoAtualizado--
+  segundosEstudando--
 
-  if (minutosEstudandoAtualizado < 0) {
-    horasEstudandoAtualizado--
-    minutosEstudandoAtualizado = 59
+  if (minutosEstudando < 0) {
+    horasEstudando--
+    minutosEstudando = 59
   }
 
-  if (segundosEstudandoAtualizado < 10) {
-    inputSegundos.value = `0${segundosEstudandoAtualizado}`
+  if (segundosEstudando < 10) {
+    inputSegundos.value = `0${segundosEstudando}`
   } else {
-    inputSegundos.value = segundosEstudandoAtualizado
+    inputSegundos.value = segundosEstudando
   }
 
-  if (minutosEstudandoAtualizado < 10) {
-    inputMinutos.value = `0${minutosEstudandoAtualizado}`
+  if (minutosEstudando < 10) {
+    inputMinutos.value = `0${minutosEstudando}`
   } else {
-    inputMinutos.value = minutosEstudandoAtualizado
+    inputMinutos.value = minutosEstudando
   }
 
-  if (horasEstudandoAtualizado < 10) {
-    inputHoras.value = `0${horasEstudandoAtualizado}`
+  if (horasEstudando < 10) {
+    inputHoras.value = `0${horasEstudando}`
   } else {
-    inputHoras.value = horasEstudandoAtualizado
+    inputHoras.value = horasEstudando
   }
   }
 
@@ -148,43 +136,43 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 
   if (inputSegundos.id == 'segundos-descansando') {
 
-    if (horasDescansandoAtualizado == 0 && minutosDescansandoAtualizado == 0 && segundosDescansandoAtualizado <= 0) {
+    if (horasDescansando == 0 && minutosDescansando == 0 && segundosDescansando <= 0) {
     clearInterval(intervalo)
     return
-  } else if (segundosDescansandoAtualizado == 0) {
-    minutosDescansandoAtualizado--
-    segundosDescansandoAtualizado = 60
+  } else if (segundosDescansando == 0) {
+    minutosDescansando--
+    segundosDescansando = 60
   }
 
-  segundosDescansandoAtualizado--
+  segundosDescansando--
 
-  if (minutosDescansandoAtualizado < 0) {
-    horasDescansandoAtualizado--
-    minutosDescansandoAtualizado = 59
+  if (minutosDescansando < 0) {
+    horasDescansando--
+    minutosDescansando = 59
   }
 
 
-  if (segundosDescansandoAtualizado < 10) {
-    inputSegundos.value = `0${segundosDescansandoAtualizado}`
+  if (segundosDescansando < 10) {
+    inputSegundos.value = `0${segundosDescansando}`
   } else {
-    inputSegundos.value = segundosDescansandoAtualizado
+    inputSegundos.value = segundosDescansando
   }
 
-  if (minutosDescansandoAtualizado < 10) {
-    inputMinutos.value = `0${minutosDescansandoAtualizado}`
+  if (minutosDescansando < 10) {
+    inputMinutos.value = `0${minutosDescansando}`
   } else {
-    inputMinutos.value = minutosEstudandoAtualizado
+    inputMinutos.value = minutosEstudando
   }
 
-  if (horasDescansandoAtualizado < 10) {
-    inputHoras.value = `0${horasDescansandoAtualizado}`
+  if (horasDescansando < 10) {
+    inputHoras.value = `0${horasDescansando}`
   } else {
-    inputHoras.value = horasDescansandoAtualizado
+    inputHoras.value = horasDescansando
   }
   }
 }
 
-
+// Função que troca os botões
 function trocaDeBotoes (botaoPrincipalComecar, botaoPrincipalParar, botaoSecundarioComecar, botaoSecundarioParar) {
   botaoPrincipalComecar.classList.toggle('display-none')
   botaoPrincipalParar.classList.toggle('display-none')
@@ -207,4 +195,24 @@ function pararCronometro (botaoParar, botaoComecar) {
   botaoComecar.classList.toggle('display-none')
 
   clearInterval(intervalo)
+}
+
+// Botões que zeram o cronômetro
+function zerar (span) {
+  if (span.id == 'zerar-estudando') {
+    clearInterval(intervalo)
+    inputHorasEstudando.value = '00'
+    inputMinutosEstudando.value = '00'
+    inputSegundosEstudando.value = '00'
+  } else if (span.id == 'zerar-descansando') {
+    clearInterval(intervalo)
+    inputHorasDescansando.value = '00'
+    inputMinutosDescansando.value = '00'
+    inputSegundosDescansando.value = '00'
+  }
+}
+
+let spans = document.querySelectorAll('span')
+for (let span of spans) {
+  span.addEventListener('click', () => zerar(span))
 }

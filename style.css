@@ -89,6 +89,7 @@ input {
 }
 
 span {
+  cursor: pointer;
   position: absolute;
   font-size: 1.8rem;
   margin-left: 10px;

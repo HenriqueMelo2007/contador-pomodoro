@@ -1,6 +1,9 @@
 // Intervalo do cronômetro
 let intervalo
 
+// Alarme do cronômetro
+let alarme = document.querySelector('#alarme')
+
 // Inputs
 let inputHorasEstudando = document.querySelector('#horas-estudando')
 let inputMinutosEstudando = document.querySelector('#minutos-estudando')
@@ -100,6 +103,8 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 
     if (horasEstudando == 0 && minutosEstudando == 0 && segundosEstudando <= 0) {
     clearInterval(intervalo)
+    alarme.play()
+    alert('Seu tempo estudando terminou! Pode ir descansar.')
     return
   } else if (segundosEstudando == 0) {
     minutosEstudando--
@@ -138,6 +143,8 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
 
     if (horasDescansando == 0 && minutosDescansando == 0 && segundosDescansando <= 0) {
     clearInterval(intervalo)
+    alarme.play()
+    alert('Seu descanso chegou ao fim! Volte a estudar.')
     return
   } else if (segundosDescansando == 0) {
     minutosDescansando--
@@ -181,14 +188,12 @@ function trocaDeBotoes (botaoPrincipalComecar, botaoPrincipalParar, botaoSecunda
   botaoSecundarioParar.classList.add('display-none')
 }
 
-
 // Botões que param o cronômetro
 const botaoPararEstudando = document.querySelector('#parar-estudando')
 botaoPararEstudando.addEventListener('click', () => pararCronometro(botaoPararEstudando, botaoComecarEstudando))
 
 const botaoPararDescansando = document.querySelector('#parar-descansando')
 botaoPararDescansando.addEventListener('click', () => pararCronometro(botaoPararDescansando, botaoComecarDescansando))
-
 
 function pararCronometro (botaoParar, botaoComecar) {
   botaoParar.classList.toggle('display-none')

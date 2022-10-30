@@ -8,7 +8,7 @@
 
 body {
   height: 100vh;
-  background-image: url(images/background-image.png);
+  background-image: url(assets/background-image.png);
   background-size: cover;
 
   color: white;

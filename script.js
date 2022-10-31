@@ -119,7 +119,7 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
     trocaDeBotoes(botaoComecarEstudando, botaoPararEstudando, botaoComecarDescansando, botaoPararDescansando)
     alarme.play()
     function alertaEstudando () {
-      alert('Seu tempo de estudo acabou! Pode descansar.')
+      alert('Your study time is over! You can rest.')
     }
     setTimeout(alertaEstudando, 3100)
     clearInterval(intervalo)
@@ -179,7 +179,7 @@ function decremento (inputHoras, inputMinutos, inputSegundos) {
       trocaDeBotoes(botaoComecarDescansando, botaoPararDescansando, botaoComecarEstudando, botaoPararEstudando)
       alarme.play()
       function alertaDescansando () {
-        alert('Seu descanso chegou ao fim! Volte a estudar.')
+        alert('Your rest has come to an end! Go back to study.')
       }
       setTimeout(alertaDescansando, 3100)
       clearInterval(intervalo)
